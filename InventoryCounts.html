@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventory Counts - University of Westminster</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f0f0f0;
+    }
+
+    .header {
+        background-color: #000;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 0;
+    }
+
+    .nav-item {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+    }
+
+    .nav-item.logout {
+        float: right;
+    }
+
+    .main-content {
+        width: 60%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .inventory-counts {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+    }
+
+    .count-item {
+        background: #f2f2f2;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .count-item span {
+        display: inline-block;
+        min-width: 120px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 24px;
+    }
+</style>
+</head>
+<body>
+<header class="header">
+    <h1 class="logo">UNIVERSITY OF WESTMINSTER</h1>
+    <nav class="nav">
+        <a href="UserManagement.html" class="nav-item">User</a>
+        <a href="EquipmentManagement.html" class="nav-item active">Inventory Management</a>
+        <a href="ReportGenerator.html" class="nav-item">Report Generator</a>
+        <a href="#" class="nav-item logout">Log Out</a>
+    </nav>
+</header>
+<main class="main-content">
+    <div class="close-btn">X</div>
+    <div class="inventory-counts">
+        <div class="count-item"><span>Inventory Count:</span> 0</div>
+        <div class="count-item"><span>Overdue Count:</span> 0</div>
+        <div class="count-item"><span>On-Site Count:</span> 0</div>
+        <div class="count-item"><span>Off-Site Count:</span> 0</div>
+        <div class="count-item"><span>Laptop Count:</span> 0</div>
+        <div class="count-item"><span>Etc:</span> 0</div>
+        <!-- Add more count items as needed -->
+    </div>
+</main>
+</body>
+</html>

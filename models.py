@@ -7,7 +7,7 @@ class Customer(models.Model):                           # customer model
     customerPassword = models.CharField(max_length = 100)
     customerFirstName = models.CharField(max_length = 100)
     customerLastName = models.CharField(max_length = 100)
-    customer = models.ForeignKey(Customer, on_delete = models.CASCADE)
+    customer = models.ForeignKey(Order, on_delete = models.CASCADE)
 
     def __str__(self):
         return f'{self.customerFirstName} {self.customerLastName}'
@@ -19,7 +19,7 @@ class Order(models.Model):                              # Order model
     orderDeviceName = models.CharField(max_length = 100)
     orderQuantity = models.PositiveIntegerField()
     orderStatus = models.CharField(max_length = 50)
-    order = models.ForeignKey(Order, on_delete = models.CASCADE)
+    order = models.ForeignKey(Admin, on_delete = models.CASCADE)
     def __str__(self):
         return f'{self.orderID} : {self.orderDeviceName} ({self.orderStatus})'
 

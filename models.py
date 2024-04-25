@@ -20,6 +20,7 @@ class Order(models.Model):                              # Order model
     orderQuantity = models.PositiveIntegerField()
     orderStatus = models.CharField(max_length = 50)
     order = models.ForeignKey(Admin, on_delete = models.CASCADE)
+    
     def __str__(self):
         return f'{self.orderID} : {self.orderDeviceName} ({self.orderStatus})'
 

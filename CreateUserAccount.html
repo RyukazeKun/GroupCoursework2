@@ -9,7 +9,7 @@
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background: #f0f0f0;
+        background-color: #47827E;
     }
 
     .modal {
@@ -18,10 +18,11 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
-        background: white;
+        background: #D9D9D9;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
         z-index: 10;
+        border-radius: 12px;
     }
 
     .modal-header {
@@ -69,11 +70,15 @@
         cursor: pointer;
         font-size: 24px;
     }
+
+    fieldset{
+        border: none;
+    }
 </style>
 </head>
 <body>
 
-<div class="modal">
+<!-- <div class="modal">
     <div class="close-btn">X</div>
     <div class="modal-header">Create User Account:</div>
     <div class="form-group">
@@ -103,7 +108,16 @@
         <label><input type="radio" name="role" value="admin"> Admin</label>
     </div>
     <button class="btn">Create account</button>
+</div> -->
+<div class = "modal">
+    <form method = "POST">
+        {% csrf_token %}
+        <fieldset>
+            <div class="modal-header">Create User Account:</div>
+            {{ form.as_p }}                                 
+            <button type="submit" class="btn">Sign Up</button>
+        </fieldset>
+    </form>
 </div>
-
 </body>
 </html>

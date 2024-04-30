@@ -61,6 +61,8 @@
     .spacing{
         margin-bottom: 30px;
     }
+    
+    
 </style>
 
 {% include "navbar.html"%}
@@ -123,6 +125,41 @@
     </div>
 
 </div>
+    #Ant
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const cancelButtons = document.querySelectorAll('.cancel');
+            cancelButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    if (button.classList.contains('inactive')) {
+                       
+                        alert('This reservation has already been canceled.');
+                        return;
+                    }
+                    
+                    if (confirm('Are you sure you want to cancel this reservation?')) {
+                        const row = button.parentNode.parentNode; 
+                        row.parentNode.removeChild(row); 
+                        alert('Reservation canceled successfully!');
+                        button.classList.add('inactive'); 
+                        button.disabled = true; 
+                    }
+                });
+            });
+    
+           
+            const reserveButtons = document.querySelectorAll('.reserve');
+            reserveButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    if (confirm('Do you want to reserve this equipment?')) {
+                        alert('Equipment reserved has been requested! Waiting for Admin approval!');
+                    }
+                });
+            });
+        });
+    </script>
+
 
 {% include "footer.html"%}
 

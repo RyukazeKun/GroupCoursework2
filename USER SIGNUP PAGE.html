@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signup</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #468280;
+        }
+        .cube {
+            width: 400px;
+            height: 400px;
+            background-color: #dddddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+            justify-content: space-between;
+        }
+        .label {
+            width: 30%;
+            text-align: left;
+            margin-left: 10px; 
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="radio"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .button {
+            width: 200px;
+            padding: 12px;
+            margin-top: 10px;
+            margin-left: auto;  
+            margin-right: auto; 
+            border: none;
+            border-radius: 10px;
+            background-color: #468280;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #35665A;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .radio-group label {
+            margin: 0 8px; 
+        }
+        .error {
+            color: #000000;
+            margin-top: 5px;
+            width: 90%;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <img src="Logo.png" alt="Signup Logo" class="logo">
+        <form action="/signup" method="post" onsubmit="return validateForm()">
+            <div class="input-group">
+                <label for="name" class="label">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <label for="username" class="label">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <label for="email" class="label">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password" class="label">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="radio-group">
+                <label for="student">Student</label>
+                <input type="radio" id="student" name="role" value="Student">
+                <label for="staff"> Staff</label>
+                <input type="radio" id="staff" name="role" value="Staff">
+            </div>
+            <button type="submit" class="button">SIGN UP</button>
+            <div class="error" id="error-message"></div>
+        </form>
+        
+    </div>
+
+    <script>
+       function validateForm() {
+    var name = document.getElementById('name').value;
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var role = document.querySelector('input[name="role"]:checked');
+    var cube = document.querySelector('.cube');
+    var errorMessage = document.getElementById('error-message');
+
+    if (!name || !username || !email || !password || !role) {
+        errorMessage.innerText = 'Please fill in all fields';
+        return false;
+    }
+
+    if (!email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        errorMessage.innerText = 'Please enter a valid email address';
+        return false;
+    }
+
+    cube.innerHTML = `
+        <div style="display: flex; flex-direction: column; height: 100%; justify-content: center; align-items: center;">
+            <img src="Logo.png" alt="Signup Logo" class="logo">
+            <p style="color: black; font-size: 20px; text-align: center;">Account sign up has been successful</p>
+            <p style="color: black; font-size: 20px; text-align: center;">Waiting for admin approval</p>
+            <button onclick="location.href='LINNNNK TO REDIRECTIORY PAGE'" style="padding: 10px 20px; margin-top: 20px; background-color: #468280; color: white; border: none; border-radius: 10px; cursor: pointer;">Back to Home</button>
+        </div>
+    `;
+    return false;
+}
+
+    </script>
+</body>
+</html>

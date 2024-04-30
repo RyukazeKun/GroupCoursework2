@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Options</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #468280;
+        }
+        .cube {
+            width: 400px;
+            height: 350px;
+            background-color: #dddddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .logo {
+            height: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            flex: 1;
+            padding: 12px; /* Increased padding for better text field interaction */
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .button {
+            width: 200px;
+            padding: 12px;
+            padding-bottom: 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #468280;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #35665A;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            margin-bottom: 10px; /* Increased margin-bottom for better separation */
+            padding-bottom: 10px; 
+        }
+        .label {
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <img src="Logo.png" alt="Login Portal Logo" class="logo">
+        <form action="/login" method="post">
+            <div class="input-group">
+                <label for="username" class="label"><b>Username:</b></label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <label for="password" class="label"><b>Password:</b></label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="button">LOGIN</button>
+        </form>
+    </div>
+</body>
+</html>

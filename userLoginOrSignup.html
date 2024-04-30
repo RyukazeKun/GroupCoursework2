@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Options</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #468280;
+        }
+        .cube {
+            width: 320px; 
+            height: 260px; 
+            background-color: #dddddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .logo {
+            height: 50px; 
+            margin-bottom: 20px; 
+        }
+        .button {
+            width: 150px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #468280;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #35665A;
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <img src="logo.png" alt="Login Portal Logo" class="logo">
+        <button class="button" onclick="location.href='/user-login/'">LOGIN</button>
+        <button class="button" onclick="location.href='/user-Signup/'">SIGN UP</button>
+    </div>
+</body>
+</html>

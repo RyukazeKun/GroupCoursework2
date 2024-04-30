@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Options</title>
+    <title>User Login</title>
     <style>
         body, html {
             height: 100%;
@@ -33,7 +33,7 @@
         }
         input[type="text"], input[type="password"] {
             flex: 1;
-            padding: 12px; /* Increased padding for better text field interaction */
+            padding: 12px;
             margin-bottom: 10px;
             border: none;
             border-radius: 10px;
@@ -42,8 +42,8 @@
         .button {
             width: 200px;
             padding: 12px;
-            padding-bottom: 20px;
             margin-top: 10px;
+            margin-bottom: 5px; 
             border: none;
             border-radius: 10px;
             background-color: #468280;
@@ -65,20 +65,26 @@
             display: flex;
             align-items: center;
             width: 90%;
-            margin-bottom: 10px; /* Increased margin-bottom for better separation */
-            padding-bottom: 10px; 
+            margin-bottom: 10px;
+            padding-bottom: 10px;
         }
         .label {
             width: 100px;
             text-align: right;
             margin-right: 10px;
         }
+        .error {
+            color: #000000; 
+            margin-top: 5px; 
+            width: 90%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="cube">
         <img src="Logo.png" alt="Login Portal Logo" class="logo">
-        <form action="/login" method="post">
+        <form action="/login" method="post" onsubmit="return validateForm()">
             <div class="input-group">
                 <label for="username" class="label"><b>Username:</b></label>
                 <input type="text" id="username" name="username" placeholder="Username" required>
@@ -88,7 +94,21 @@
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
             <button type="submit" class="button">LOGIN</button>
+            <div class="error" id="error-message"></div> 
         </form>
     </div>
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var errorMessage = document.getElementById('error-message');
+            if (username === '' || password === '' || username !== 'expectedUsername' || password !== 'expectedPassword') {
+                errorMessage.innerText = 'Inocrrect login details, try again!';
+                return false; 
+            }
+            errorMessage.innerText = ''; 
+            return true; 
+        }
+    </script>
 </body>
 </html>

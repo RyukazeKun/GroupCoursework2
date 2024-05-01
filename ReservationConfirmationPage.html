@@ -1,11 +1,14 @@
-#ANT
+<!-- Authored by Antonio Aciobanitei -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- character set and responsive webpage -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Title-->
     <title>Booking Confirmation</title>
     <style>
+        /* styling for the whole page and centering the block */
         body, html {
             height: 100%;
             margin: 0;
@@ -15,6 +18,7 @@
             justify-content: center;
             align-items: center;
         }
+        /* styling for the reservation confirmation container */
         .cube {
             width: 400px;
             height: 300px; 
@@ -26,24 +30,27 @@
             display: flex;
             flex-direction: column;
             justify-content: center; 
-           
         }
-        .input-group {
+        /* Styling for input group which includes the labels and input feilds */
+        .InputGroup {
             margin-bottom: 15px; 
             display: flex;
             align-items: center;
         }
+        /* Styling the lables (specific width and alignment to match CW1 mock)*/
         .label {
             min-width: 150px;
             text-align: left;
             margin-right: 10px; 
         }
+        /* Styling the input feild/drop option for date of reservation*/
         input, select {
             width: 100%; 
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+         /* Styling for the login button (size, colour, margins etc)*/
         button {
             width: 80%; 
             padding: 10px;
@@ -57,28 +64,34 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+         /* hover affect for when the mouse hovers over the login button (turns darker)*/
         button:hover {
             background-color: #0a6658;
         }
     </style>
 </head>
 <body>
+    <!-- the shared django navbar -->
     {% include "navbar.html" %}
-
-    <div class="cube" id="cube-container">
-        <div class="input-group">
+    <!-- The main container of the reservation form -->
+    <div class="cube" id="CubeContainer">
+       <!--  input group for displaying equipment id-->
+        <div class="InputGroup">
             <label class="label" for="equipment-id">Equipment ID:</label>
             <input type="text" id="equipment-id" readonly value="">
         </div>
-        <div class="input-group">
+        <!--  input group for displaying equipment name-->
+        <div class="InputGroup">
             <label class="label" for="equipment-name">Equipment Name:</label>
             <input type="text" id="equipment-name" readonly value="">
         </div>
-        <div class="input-group">
+        <!--  input group for displaying equipment type-->
+        <div class="InputGroup">
             <label class="label" for="equipment-type">Equipment Type:</label>
             <input type="text" id="equipment-type" readonly value="">
         </div>
-        <div class="input-group">
+        <!--  input group for displaying reservattion date options -->
+        <div class="InputGroup">
             <label class="label" for="reservation-date">Reservation Date:</label>
             <select id="reservation-date">
                 <option value="">June 7, 2024</option>
@@ -86,22 +99,26 @@
                 <option value="">June 3, 2024</option>
             </select>
         </div>
+        <!--  Button for confirmation of booking-->
         <button onclick="confirmBooking()">Confirm Booking</button>
     </div>
-
+    <!--  script for replacing all the inputgroups with a confirmation message-->
     <script>
          function confirmBooking() {
-            const container = document.getElementById('cube-container');
+             // removes everything except the cube
+            const container = document.getElementById('CubeContainer');
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
+             // dispays message in the center 
             const message = document.createElement('div');
             message.textContent = "Booking request has been made.";
             message.style.textAlign = 'center';
             container.appendChild(message);
         }
     </script>
-
+    <!--shared footer using django-->
     {% include "footer.html" %}
+    
 </body>
 </html>

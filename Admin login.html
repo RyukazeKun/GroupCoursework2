@@ -96,7 +96,7 @@
 <body>
     <!-- The main container of the login form -->
     <div class="cube">
-        <img src="Logo.png" alt="Login Portal Logo" class="logo">
+        <img src="Logo.png" alt="westminster logo" class="logo">
         <p>Admin Login Details:</p>
         <!--Login form for action and attributes -->
         <form action="/login" method="post" onsubmit="return validateForm()">
@@ -113,7 +113,7 @@
             <!-- Login button -->
             <button type="submit" class="button">LOGIN</button>
             <!-- Error message display area incase of wrong input -->
-            <div class="error" id="error-message"></div>
+            <div class="error" id="ErrorMessage"></div>
         </form>
     </div>
      <!-- login validation script -->
@@ -123,12 +123,12 @@
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
             // checks if obtained elemnt is correct and returns an error if its wrong
-            if (username === '' || password === '' || username !== 'expectedUsername' || password !== 'expectedPassword') {
-                document.getElementById('error-message').innerText = 'Incorrect login information';
+            if (username === '' || password === '' || username !== 'Username' || password !== 'Password') {
+                document.getElementById('ErrorMessage').innerText = 'Incorrect login information';
                 return false; 
             }
             //Clears error message when credentials are correct
-            document.getElementById('error-message').innerText = '';
+            document.getElementById('ErrorMessage').innerText = '';
             return true; 
         }
     </script>

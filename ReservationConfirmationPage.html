@@ -1,0 +1,107 @@
+#ANT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #eef1f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cube {
+            width: 400px;
+            height: 300px; 
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+           
+        }
+        .input-group {
+            margin-bottom: 15px; 
+            display: flex;
+            align-items: center;
+        }
+        .label {
+            min-width: 150px;
+            text-align: left;
+            margin-right: 10px; 
+        }
+        input, select {
+            width: 100%; 
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 80%; 
+            padding: 10px;
+            margin-top: 20px;
+            margin-left: auto; 
+            margin-right: auto; 
+            border: none;
+            border-radius: 5px;
+            background-color: #108480;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0a6658;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <div class="cube" id="cube-container">
+        <div class="input-group">
+            <label class="label" for="equipment-id">Equipment ID:</label>
+            <input type="text" id="equipment-id" readonly value="">
+        </div>
+        <div class="input-group">
+            <label class="label" for="equipment-name">Equipment Name:</label>
+            <input type="text" id="equipment-name" readonly value="">
+        </div>
+        <div class="input-group">
+            <label class="label" for="equipment-type">Equipment Type:</label>
+            <input type="text" id="equipment-type" readonly value="">
+        </div>
+        <div class="input-group">
+            <label class="label" for="reservation-date">Reservation Date:</label>
+            <select id="reservation-date">
+                <option value="2024-06-01">June 7, 2024</option>
+                <option value="2024-06-02">June 28, 2024</option>
+                <option value="2024-06-03">June 3, 2024</option>
+            </select>
+        </div>
+        <button onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+
+    <script>
+         function confirmBooking() {
+            const container = document.getElementById('cube-container');
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            const message = document.createElement('div');
+            message.textContent = "Booking request has been made.";
+            message.style.textAlign = 'center';
+            container.appendChild(message);
+        }
+    </script>
+
+    {% include "footer.html" %}
+</body>
+</html>

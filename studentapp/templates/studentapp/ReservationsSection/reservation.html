@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+</head>
+
+<style>
+    body{
+        font-family: 'Arial', sans-serif;
+    }
+
+    h3{
+        background-color: #108480;
+        color: white;
+        text-align: left;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        border-radius: 5px;
+    }
+
+    table, th, td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+    button{
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: medium;
+    }
+
+    .box{
+        background-color: white;
+        text-align: center;
+        width: 90%;
+        margin: auto;
+        margin-top: 70px;
+        padding: 30px;
+        border-radius: 5px;
+    }
+
+    .cancel{
+        background-color: #FF9494;
+        border-color: #BA6262;
+    }
+
+    .reserve{
+        background-color: #108480;
+        border-color: #094F4D;
+        color: white;
+    }
+
+    .spacing{
+        margin-bottom: 30px;
+    }
+</style>
+
+{% include "navbar.html"%}
+
+<div class="box">
+
+    <div>
+        <nav class="spacing">
+            <a href="reservation/" class="nav-item">View Reservation History</a>
+            <a href="bookequipment/" class="nav-item">Book Equipment</a>
+        </nav>
+    </div>
+
+    <div>
+        <h3>Current Bookings: </h3>
+    </div>
+
+    <div>
+        <table style="width:100%">
+            <tr>
+                <td>Equipment ID</td>
+                <td>Equipment Name</td>
+                <td>Equipment Type</td>
+                <td>Return Date</td>
+                <td>Reason</td>
+                <td style="width:10%"><button class="cancel">Cancel</button></td>
+            </tr>
+            <tr>
+                <td>Equipment ID</td>
+                <td>Equipment Name</td>
+                <td>Equipment Type</td>
+                <td>Return Date</td>
+                <td>Reason</td>
+                <td><button class="cancel">Cancel</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h3>History: </h3>
+    </div>
+
+    <div>
+        <table style="width:100%">
+            <tr>
+                <td>Equipment ID</td>
+                <td>Equipment Name</td>
+                <td>Equipment Type</td>
+                <td>Reason</td>
+                <td style="width:10%"><button class="reserve">Reserve</button></td>
+            </tr>
+            <tr>
+                <td>Equipment ID</td>
+                <td>Equipment Name</td>
+                <td>Equipment Type</td>
+                <td>Reason</td>
+                <td><button class="reserve">Reserve</button></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+{% include "footer.html"%}
+
+</html>

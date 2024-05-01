@@ -1,10 +1,14 @@
+<!-- Authored by Antonio Aciobanitei -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- character set and responsive webpage -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Title-->
     <title>Login Options</title>
     <style>
+        /* styling for the whole page and centering the cubic container */
         body, html {
             height: 100%;
             margin: 0;
@@ -14,6 +18,7 @@
             align-items: center;
             background-color: #468280;
         }
+         /* styling for the redirectory page container */
         .cube {
             width: 320px; 
             height: 260px; 
@@ -26,10 +31,12 @@
             padding: 20px;
             box-sizing: border-box;
         }
+         /* Styling for the Westminster logo  */
         .logo {
             height: 50px;
             margin-bottom: 20px;
         }
+         /* Styling for the login button (size, colour, margins etc)*/
         .button {
             width: 200px; 
             padding: 10px;
@@ -42,15 +49,19 @@
             transition: background-color 0.3s;
             text-align: center;
         }
+        /* hover affect for when the mouse hovers over the login button (turns darker)*/
         .button:hover {
             background-color: #35665A;
         }
     </style>
 </head>
 <body>
+    <!-- The main container of the page -->
     <div class="cube">
-        <img src="logo.png" alt="Login Portal Logo" class="logo">
+        <img src="logo.png" alt="westminster Logo" class="logo">
+        <!-- Button to access the user login and signup page -->
         <button class="button" onclick="location.href='/user-login/'">USER DASHBOARD</button>
+         <!-- Button to access the admin login page -->
         <button class="button" onclick="location.href='/admin-login/'">ADMIN DASHBOARD</button>
     </div>
 </body>

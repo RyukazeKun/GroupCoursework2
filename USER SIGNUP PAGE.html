@@ -1,10 +1,14 @@
+<!-- Authored by Antonio Aciobanitei -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- character set and responsive webpage -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--Title-->
     <title>User Signup</title>
     <style>
+        /* styling for the whole page and centering the user signup form */
         body, html {
             height: 100%;
             margin: 0;
@@ -14,6 +18,7 @@
             align-items: center;
             background-color: #468280;
         }
+          /* styling for the signup form container */
         .cube {
             width: 400px;
             height: 400px;
@@ -26,18 +31,21 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        .input-group {
+        /* Styling for input group which includes the labels and input feilds */
+        .InputGroup {
             display: flex;
             align-items: center;
             width: 100%;
             margin-bottom: 10px;
             justify-content: space-between;
         }
+        /* Styling the lables (specific width and alignment to match CW1 mock)*/
         .label {
             width: 30%;
             text-align: left;
             margin-left: 10px; 
         }
+        /* Styling for all input fields */
         input[type="text"], input[type="email"], input[type="password"], input[type="radio"] {
             flex: 1;
             padding: 10px;
@@ -45,6 +53,7 @@
             border-radius: 10px;
             box-sizing: border-box;
         }
+         /* Styling for the signup button (size, colour, margins etc)*/
         .button {
             width: 200px;
             padding: 12px;
@@ -59,28 +68,34 @@
             transition: background-color 0.3s;
             text-align: center;
         }
+        /* hover affect for when the mouse hovers over the signup button (turns darker)*/
         .button:hover {
             background-color: #35665A;
         }
-        .radio-group {
+        /* styling of radgroup element containers*/
+        .RadGroup {
             display: flex;
             justify-content: center;
             margin-top: 10px;
         }
-        .radio-group label {
+        /* styling of radgroup lable*/
+        .RadGroup label {
             margin: 0 8px; 
         }
+        /* error message styling for incorrect inputs*/
         .error {
             color: #000000;
             margin-top: 5px;
             width: 90%;
             text-align: center;
         }
+        /* Styling for the Westminster logo  */
         .logo {
             height: 50px;
             margin-bottom: 20px;
             padding-bottom: 20px;
         }
+        /* Layout for the form */
         form {
             width: 100%;
             display: flex;
@@ -90,57 +105,66 @@
     </style>
 </head>
 <body>
+    <!-- The main container of the signup form -->
     <div class="cube">
-        <img src="Logo.png" alt="Signup Logo" class="logo">
+        <img src="Logo.png" alt="westminster Logo" class="logo">
+        <!--Signup form for action and attributes -->
         <form action="/signup" method="post" onsubmit="return validateForm()">
-            <div class="input-group">
+            <!-- Name input group -->
+            <div class="InputGroup">
                 <label for="name" class="label">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Full Name" required>
             </div>
-            <div class="input-group">
+            <!-- Username input group -->
+            <div class="InputGroup">
                 <label for="username" class="label">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Username" required>
             </div>
-            <div class="input-group">
+            <!-- Email input group -->
+            <div class="InputGroup">
                 <label for="email" class="label">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
-            <div class="input-group">
+            <!-- Password input group -->
+            <div class="InputGroup">
                 <label for="password" class="label">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
-            <div class="radio-group">
+            <!-- option of being a student or staff role-->
+            <div class="RadGroup">
                 <label for="student">Student</label>
                 <input type="radio" id="student" name="role" value="Student">
                 <label for="staff"> Staff</label>
                 <input type="radio" id="staff" name="role" value="Staff">
             </div>
+            <!-- submit button -->
             <button type="submit" class="button">SIGN UP</button>
+             <!-- Error message display area incase of wrong input -->
             <div class="error" id="error-message"></div>
         </form>
-        
     </div>
-
+    <!-- signup validation script -->
     <script>
        function validateForm() {
-    var name = document.getElementById('name').value;
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var role = document.querySelector('input[name="role"]:checked');
-    var cube = document.querySelector('.cube');
-    var errorMessage = document.getElementById('error-message');
-
-    if (!name || !username || !email || !password || !role) {
-        errorMessage.innerText = 'Please fill in all fields';
-        return false;
-    }
-
-    if (!email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-        errorMessage.innerText = 'Please enter a valid email address';
-        return false;
-    }
-
+           //obtains elemnts for validation
+            var name = document.getElementById('name').value;
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var role = document.querySelector('input[name="role"]:checked');
+            var cube = document.querySelector('.cube');
+            var errorMessage = document.getElementById('error-message');
+            //Makes sure the feilds are not empty
+            if (!name || !username || !email || !password || !role) {
+                errorMessage.innerText = 'Please fill in all fields';
+                return false;
+            }
+            //makes sure the feild contains a @ , characters around @ and a domain
+            if (!email.match(/\S+@\S+\.\S+/)) {
+                errorMessage.innerText = 'Please enter a valid email address';
+                return false;
+        }
+    //displays a message whilst removing everything except the cube and logo
     cube.innerHTML = `
         <div style="display: flex; flex-direction: column; height: 100%; justify-content: center; align-items: center;">
             <img src="Logo.png" alt="Signup Logo" class="logo">

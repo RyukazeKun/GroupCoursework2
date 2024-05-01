@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+</head>
+
+<style>
+    body{
+        font-family: 'Arial', sans-serif;
+    }
+
+    h3{
+        font-size: xx-large;
+    }
+
+    p{
+        font-size: x-large;
+    }
+
+    label{
+        font-weight: bold;
+    }
+
+    .spacing{
+        padding-left: 50px;
+    }
+
+    .button{
+        background-color: #108480;
+        color: white;
+        border-radius: 10%;
+        margin-top: 10px;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: large;
+    }
+    
+    .box{
+        background-color: white;
+        text-align: center;
+        width: 350px;
+        margin: auto;
+        margin-top: 70px;
+        padding: 30px;
+        padding-bottom: 50px;
+        border-radius: 2%;
+    }
+
+</style>
+
+{% include "navbar.html"%}
+
+<div class="box">
+
+    <h3>Update Information</h3>
+
+    <form action="/action_page.php">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="email">Email: </label>
+            <input type="text" id="email" name="email"><br><br>
+            <label for="password">Password: </label>
+            <input type="text" id="password" name="password"><br><br>
+        </div>
+        <div>
+            <label for="student">Student</label>
+            <input type="radio" id="student" name="type" value="student">
+            <label for="staff" class="spacing">Staff</label>
+            <input type="radio" id="staff" name="type" value="staff"><br><br>
+        </div>
+        <p><a href="confirmed/">Save</a></p>
+    </form>
+
+</div>
+
+{% include "footer.html"%}
+
+</html>

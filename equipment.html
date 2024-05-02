@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment</title>
+    <title>Reservation</title>
 </head>
 
 <style>
@@ -33,7 +33,7 @@
         text-align: center;
         width: 90%;
         margin: auto;
-        margin-top: 70px;
+        margin-top: 60px;
         padding: 30px;
         border-radius: 5px;
     }
@@ -49,90 +49,101 @@
     .staffOnly{
         color: #108480;
     }
+
+    .spacing{
+        margin-bottom: 30px;
+    }
 </style>
 
-{% include "navbar.html"%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+</head>
+
+
+
 
 <div class="box">
 
+    <div>
+        <h3><a href="" class="nav-item">View Reservation History</a></h3>
+        <h3><a href="" class="nav-item">Book Equipment</a></h3>
+    </div>
+
+
     <input class="searchBar" type="text" placeholder="Search...">
 
+ 
     <table style="width:100%">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Type</th>
-            <th>Availabilty</th>
+            <th>Availability</th>
             <th>Return Date</th>
-            <th style="width:10%"></th>
-            <th style="width:10%"></th>
+            <th colspan="2">Actions</th>
         </tr>
+        {% for devices in available_equipment %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="staffOnly">Staff Only</td>
-            <td><button>Book</button></td>
+            <td>{{ device.deviceSerialNo  }}</td>
+            <td>{{ device.deviceName }}</td>
+            <td>{{ device.deviceType }}</td>
+            <td>{{ device.availability }}</td>
+            <td>{{ equipment.return_date }}</td>
+            {% if equipment.available %}
+            <td><form action="{% url 'book-equipment' equipment.equipmentID %}" method="post">{% csrf_token %}
+                <button type="submit">Book</button>
+            </form></td>
+            {% else %}
+            <td>Not available</td>
+            {% endif %}
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button>Book</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="staffOnly">Staff Only</td>
-            <td><button>Book</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="staffOnly">Staff Only</td>
-            <td><button>Book</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button>Book</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button>Book</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button>Book</button></td>
-        </tr>
+        {% endfor %}
     </table>
 
 </div>
 
-{% include "footer.html"%}
+
 </html>
+
+<script>
+    function bookEquipment(equipmentId) {
+        fetch(`/book-equipment/${equipmentId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById(`bookButton_${equipmentId}`).innerText = 'Booked';
+            } else {
+                console.error('Failed to book equipment');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>

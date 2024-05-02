@@ -38,3 +38,43 @@ def register(request):              # function for create user account page
     else:
         form = UserRegisterForm()
     return render(request, 'CreateUserAccount.html', {'form': form})
+
+
+def reservation_history(request):
+    search_query = request.GET.get('search', '')
+    equipments = Equipment.objects.filter(name__icontains=search_query)
+
+    if 'generate_pdf' in request.GET:
+        return generate_pdf_report(equipments)
+
+    return render(request, 'reservation_history.html', {'equipments': equipments})
+
+
+
+def generate_pdf_report(request,):
+    equipments = Equipment.objects.all()
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="equipments_report.pdf"'
+    p = canvas.Canvas(response)
+    p.setFont("Helvetica-Bold", 16)
+    p.drawString(100, 800, "Equipment Report")
+    p.setFont("Helvetica", 12)
+    y = 780
+    p.drawString(30, y, "ID")
+    p.drawString(80, y, "Name")
+    p.drawString(220, y, "Type")
+    p.drawString(360, y, "Quantity")
+    p.drawString(460, y, "Status")
+    for equipment in equipments:
+        y -= 20
+        if y < 100:
+            p.showPage()
+            y = 780
+        p.drawString(30, y, str(equipment.equipmentID))
+        p.drawString(80, y, equipment.equipmentName)
+        p.drawString(220, y, equipment.equipmentType)
+        p.drawString(360, y, str(equipment.quantity))
+        p.drawString(460, y, equipment.status)
+    p.showPage()
+    p.save()
+    return response
